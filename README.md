@@ -149,7 +149,27 @@ CUDA_VISIBLE_DEVICES=0 python src/train_sft.py \
     --plot_loss \
     --fp16
 ```
-
+### QLoRA
+```bash
+CUDA_VISIBLE_DEVICES=0 python src/train_sft.py \
+    --model_name_or_path /xx/model/model_weights/Ziya-LLaMA-13B \
+    --do_train \
+    --dataset xx \
+    --finetuning_type lora \
+    --output_dir /xx/output \
+    --overwrite_cache \
+    --per_device_train_batch_size 4 \
+    --gradient_accumulation_steps 4 \
+    --lr_scheduler_type cosine \
+    --logging_steps 10 \
+    --save_steps 1000 \
+    --learning_rate 1e-3 \
+    --num_train_epochs 10.0 \
+    --resume_lora_training False \
+    --plot_loss \
+    --fp16 \
+    --quantization_bit 4
+```
 ### Reward Model Training
 
 ```bash
